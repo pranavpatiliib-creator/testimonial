@@ -146,18 +146,23 @@ async function submitForm(event) {
     }
 
     const contentType = response.headers.get("content-type") || "";
-    if (contentType.includes("application/json")) {
-      const result = await response.json();
-      if (result && result.ok === false) {
-        throw new Error(result.error || "Server rejected the submission");
-      }
+    if (!contentType.includes("application/json")) {
+      const bodyText = await response.text();
+      throw new Error(
+        `Unexpected response type: ${contentType || "unknown"} ${bodyText.slice(0, 120)}`
+      );
+    }
+
+    const result = await response.json();
+    if (!result || result.ok !== true) {
+      throw new Error(result?.error || "Server rejected the submission");
     }
 
     form.classList.add("hidden");
     successMessage.classList.remove("hidden");
   } catch (error) {
     formError.textContent =
-      "Submission failed. Verify Apps Script deployment access is set to Anyone and redeploy.";
+      "Submission failed. In Apps Script deploy Web App with access set to Anyone, then redeploy.";
     prevBtn.disabled = false;
     submitBtn.disabled = false;
     submitBtn.textContent = "Submit";
