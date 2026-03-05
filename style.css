@@ -25,6 +25,7 @@ body {
     radial-gradient(circle at 90% 20%, #d5f8e6 0%, transparent 35%),
     linear-gradient(150deg, var(--bg-1), var(--bg-2));
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .page {
@@ -49,15 +50,17 @@ body {
 }
 
 .hero h1 {
-  margin: 10px 0 10px;
-  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.15;
 }
 
 .hero-text {
-  margin: 0 auto;
+  margin: 10px auto 0;
   max-width: 700px;
   color: var(--muted);
   line-height: 1.6;
+  font-size: 1.05rem;
 }
 
 .meta-line {
@@ -71,6 +74,7 @@ body {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   padding: clamp(18px, 3.5vw, 34px);
+  width: 100%;
 }
 
 .progress-wrap {
@@ -103,7 +107,7 @@ body {
 
 form {
   display: grid;
-  gap: 18px;
+  gap: 10px;
 }
 
 .required-note {
@@ -112,13 +116,9 @@ form {
   color: var(--muted);
 }
 
-.step {
-  display: none;
-  animation: fadeIn 0.28s ease;
-}
-
-.step.active {
+.field {
   display: block;
+  margin-bottom: 8px;
 }
 
 label,
@@ -164,15 +164,18 @@ fieldset {
 
 .option {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   margin: 8px 0;
   font-weight: 500;
   color: #2d3748;
+  line-height: 1.45;
 }
 
 .option input {
   accent-color: var(--primary);
+  margin-top: 4px;
+  flex-shrink: 0;
 }
 
 .stars {
@@ -206,7 +209,7 @@ fieldset {
 
 .actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
   margin-top: 8px;
 }
@@ -293,19 +296,45 @@ fieldset {
 
 @media (max-width: 640px) {
   .page {
-    margin: 22px auto;
+    margin: 14px auto;
+    width: min(98vw, 640px);
   }
 
   .form-card {
-    padding: 16px;
-    border-radius: 16px;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .hero {
+    padding: 10px 4px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.5rem, 8vw, 2.1rem);
+  }
+
+  .hero-text {
+    font-size: 0.97rem;
+  }
+
+  label,
+  legend {
+    font-size: 0.95rem;
+  }
+
+  input[type="text"],
+  textarea {
+    padding: 11px 12px;
+    font-size: 0.96rem;
   }
 
   .actions {
-    flex-wrap: wrap;
+    justify-content: stretch;
+    margin-top: 4px;
   }
 
   .btn {
     width: 100%;
+    padding: 12px 16px;
   }
 }

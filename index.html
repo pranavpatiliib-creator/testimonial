@@ -15,46 +15,23 @@
 <body>
   <main class="page">
     <section class="hero">
-      <p class="eyebrow">Dr. Vithalrao Vikhe Patil  College of Engineering </p>
-      <h1>Alumni Testimonial Consent Form</h1>
-      <p class="hero-text">
-        Dr. Vithalrao Vikhe Patil Engineering College, Vilad Ghat, is collecting testimonials
-        from alumni to showcase their experiences and achievements.
-      </p>
-      <p class="hero-text">
-        Your testimonial may be used on the college website, brochures, social media platforms,
-        promotional materials, and during student orientation programs.
-      </p>
-      <p class="hero-text">
-        By filling out this form, you confirm that you give permission to the college to use your
-        testimonial for academic and promotional purposes.
-      </p>
-      <p class="meta-line"><strong>pranavpatiliib@gmail.com</strong> | Not shared</p>
+      <h1>Dr. Vithalrao Vikhe Patil College of Engineering</h1>
+      <p class="hero-text">Alumni Testimonial Consent Form</p>
     </section>
 
     <section class="form-card" aria-labelledby="form-heading">
-      <div class="progress-wrap" aria-hidden="true">
-        <div class="progress-labels">
-          <span id="progressText">Step 1 of 8</span>
-          <span id="progressPercent">13%</span>
-        </div>
-        <div class="progress-track">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-      </div>
-
       <p class="required-note"><span>*</span> Indicates required question</p>
 
       <form id="testimonialForm" novalidate>
         <h2 id="form-heading" class="sr-only">Testimonial Form</h2>
 
-        <div class="step active" data-step="1">
+        <div class="field">
           <label for="name">1. Name Alumni <span>*</span></label>
           <input type="text" id="name" name="name" placeholder="Enter your full name" required />
           <p class="error" id="nameError"></p>
         </div>
 
-        <div class="step" data-step="2">
+        <div class="field">
           <label for="yearOfGraduation">2. Year of Graduation <span>*</span></label>
           <input
             type="text"
@@ -66,7 +43,7 @@
           <p class="error" id="yearOfGraduationError"></p>
         </div>
 
-        <div class="step" data-step="3">
+        <div class="field">
           <label for="branchDepartment">3. Branch / Department <span>*</span></label>
           <input
             type="text"
@@ -78,7 +55,7 @@
           <p class="error" id="branchDepartmentError"></p>
         </div>
 
-        <div class="step" data-step="4">
+        <div class="field">
           <label for="currentOrganization">4. Current Organization / Company <span>*</span></label>
           <input
             type="text"
@@ -90,7 +67,7 @@
           <p class="error" id="currentOrganizationError"></p>
         </div>
 
-        <div class="step" data-step="5">
+        <div class="field">
           <label for="currentDesignation">5. Current Designation <span>*</span></label>
           <input
             type="text"
@@ -102,7 +79,7 @@
           <p class="error" id="currentDesignationError"></p>
         </div>
 
-        <div class="step" data-step="6">
+        <div class="field">
           <label for="testimonialMessage">6. Your Testimonial About the College <span>*</span></label>
           <textarea
             id="testimonialMessage"
@@ -114,7 +91,7 @@
           <p class="error" id="testimonialMessageError"></p>
         </div>
 
-        <div class="step" data-step="7">
+        <div class="field">
           <fieldset>
             <legend>7. I have shared testimonial to Dr. S. R. Udawant, Alumni Coordinator <span>*</span></legend>
             <label class="option">
@@ -131,7 +108,7 @@
           <p class="error" id="sharedWithCoordinatorError"></p>
         </div>
 
-        <div class="step" data-step="8">
+        <div class="field">
           <fieldset>
             <legend>8. Consent Declaration <span>*</span></legend>
             <label class="option">
@@ -150,9 +127,7 @@
         </div>
 
         <div class="actions">
-          <button type="button" id="prevBtn" class="btn secondary" disabled>Previous</button>
-          <button type="button" id="nextBtn" class="btn primary">Next</button>
-          <button type="button" id="submitBtn" class="btn primary hidden">Submit</button>
+          <button type="submit" id="submitBtn" class="btn primary">Submit</button>
         </div>
         <p class="error" id="formError"></p>
       </form>
