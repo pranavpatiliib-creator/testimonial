@@ -1,6 +1,5 @@
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbx4Qs_XOesI8Rx7a0eWYANZ9GDh_aevShG1Na5R3w2syNPpnCbXaFHPSKg8dt46TbtWtA/exec";
-
+  "https://script.google.com/macros/s/AKfycbxh2GgIbvJUFT_IInQLHrtibtHq93-pw-BDqXXC68sfbesCOviTM1mqvFxcW1BiUyIrgw/exec";
 const form = document.getElementById("testimonialForm");
 const steps = Array.from(document.querySelectorAll(".step"));
 const prevBtn = document.getElementById("prevBtn");
@@ -133,18 +132,32 @@ async function submitForm(event) {
   const payload = collectFormData();
 
   try {
-    // Google Apps Script endpoints often return opaque responses in browsers.
-    // "no-cors" allows the request to be sent without being blocked by CORS.
-    await fetch(GOOGLE_SCRIPT_URL, {
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      mode: "no-cors",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      },
       body: new URLSearchParams(payload),
     });
+
+    if (!response.ok) {
+      throw new Error(`Server returned ${response.status}`);
+    }
+
+    const contentType = response.headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+      const result = await response.json();
+      if (result && result.ok === false) {
+        throw new Error(result.error || "Server rejected the submission");
+      }
+    }
 
     form.classList.add("hidden");
     successMessage.classList.remove("hidden");
   } catch (error) {
-    formError.textContent = "Submission failed. Please try again.";
+    formError.textContent =
+      "Submission failed. Verify Apps Script deployment access is set to Anyone and redeploy.";
     prevBtn.disabled = false;
     submitBtn.disabled = false;
     submitBtn.textContent = "Submit";
