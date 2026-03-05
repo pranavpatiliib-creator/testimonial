@@ -1,5 +1,5 @@
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwXRBtdTCIMKQnQ34-MDrdFAVysi_FNXp8hDlXUsts5hK_fyqHGfySIU54_1WP85rXoHA/exec";
+  "https://script.google.com/macros/s/AKfycbzqetOqPzRjTtCE9UYEfXXuBJG5x7cjVmbXRd57szkrojWTd9aSQaVOeiDMrH-Iwn1hdQ/exec";
 const form = document.getElementById("testimonialForm");
 const steps = Array.from(document.querySelectorAll(".step"));
 const prevBtn = document.getElementById("prevBtn");
@@ -129,6 +129,17 @@ function collectFormData() {
   formData.forEach((value, key) => {
     data[key] = value;
   });
+
+  // Backward compatibility for older Google Sheet/App Script columns.
+  data.email = data.email || "";
+  data.organization = data.organization || data.currentOrganization || "";
+  data.hearAboutUs = data.hearAboutUs || "Alumni Form";
+  data.rating = data.rating || "";
+  data.bestArea = data.bestArea || "";
+  data.recommendation = data.recommendation || "";
+  data.favoriteFeature = data.favoriteFeature || data.testimonialMessage || "";
+  data.improvement = data.improvement || "";
+  data.teamResponsive = data.teamResponsive || "";
 
   data.submittedAt = new Date().toISOString();
   return data;
