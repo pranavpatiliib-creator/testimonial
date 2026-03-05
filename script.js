@@ -1,6 +1,5 @@
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxh2GgIbvJUFT_IInQLHrtibtHq93-pw-BDqXXC68sfbesCOviTM1mqvFxcW1BiUyIrgw/exec";
-const form = document.getElementById("testimonialForm");
+  "https://script.google.com/macros/s/AKfycbxsPDySZXZyxKZxbLQPa9EEda8urYZy5UooBHEvD7s4zNPRNofF8zTjvaPGgZ2x8L1kig/exec";
 const steps = Array.from(document.querySelectorAll(".step"));
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -71,6 +70,17 @@ function validateStep(stepIndex) {
       return;
     }
 
+    if (field.type === "checkbox") {
+      if (!field.checked) {
+        setError(`${field.name}Error`, "Please confirm this required field.");
+        isValid = false;
+        if (!firstInvalidElement) {
+          firstInvalidElement = field;
+        }
+      }
+      return;
+    }
+
     const value = field.value.trim();
     if (!value) {
       setError(`${field.name}Error`, "This field is required.");
@@ -79,6 +89,17 @@ function validateStep(stepIndex) {
         firstInvalidElement = field;
       }
       return;
+    }
+
+    if (field.name === "yearOfGraduation") {
+      const yearPattern = /^(19|20)\d{2}$/;
+      if (!yearPattern.test(value)) {
+        setError("yearOfGraduationError", "Enter a valid 4-digit year.");
+        isValid = false;
+        if (!firstInvalidElement) {
+          firstInvalidElement = field;
+        }
+      }
     }
 
     if (field.type === "email") {
@@ -113,7 +134,9 @@ function collectFormData() {
 }
 
 async function submitForm(event) {
-  event.preventDefault();
+  if (event && typeof event.preventDefault === "function") {
+    event.preventDefault();
+  }
   formError.textContent = "";
 
   if (!validateStep(currentStep)) {
@@ -184,6 +207,7 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
+submitBtn.addEventListener("click", submitForm);
 form.addEventListener("submit", submitForm);
 
 updateStepUI();
