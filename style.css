@@ -60,6 +60,12 @@ body {
   line-height: 1.6;
 }
 
+.meta-line {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .form-card {
   background: var(--card-bg);
   border-radius: var(--radius-lg);
@@ -98,6 +104,12 @@ body {
 form {
   display: grid;
   gap: 18px;
+}
+
+.required-note {
+  margin: 0 0 16px;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 .step {

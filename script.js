@@ -1,5 +1,6 @@
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxsPDySZXZyxKZxbLQPa9EEda8urYZy5UooBHEvD7s4zNPRNofF8zTjvaPGgZ2x8L1kig/exec";
+  "https://script.google.com/macros/s/AKfycbwXRBtdTCIMKQnQ34-MDrdFAVysi_FNXp8hDlXUsts5hK_fyqHGfySIU54_1WP85rXoHA/exec";
+const form = document.getElementById("testimonialForm");
 const steps = Array.from(document.querySelectorAll(".step"));
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
