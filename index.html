@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share Your Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">We value your voice</p>
+      <h1>Share Your Experience</h1>
+      <p class="hero-text">
+        Help us improve by answering a few quick questions. Your testimonial may be featured
+        (with your permission).
+      </p>
+    </section>
+
+    <section class="form-card" aria-labelledby="form-heading">
+      <div class="progress-wrap" aria-hidden="true">
+        <div class="progress-labels">
+          <span id="progressText">Step 1 of 12</span>
+          <span id="progressPercent">8%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <form id="testimonialForm" novalidate>
+        <h2 id="form-heading" class="sr-only">Testimonial Form</h2>
+
+        <div class="step active" data-step="1">
+          <label for="name">1. Full Name <span>*</span></label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+          <p class="error" id="nameError"></p>
+        </div>
+
+        <div class="step" data-step="2">
+          <label for="email">2. Email Address <span>*</span></label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          <p class="error" id="emailError"></p>
+        </div>
+
+        <div class="step" data-step="3">
+          <label for="organization">3. Organization / College <span>*</span></label>
+          <input
+            type="text"
+            id="organization"
+            name="organization"
+            placeholder="Your organization or college"
+            required
+          />
+          <p class="error" id="organizationError"></p>
+        </div>
+
+        <div class="step" data-step="4">
+          <label for="hearAboutUs">4. How did you hear about us? <span>*</span></label>
+          <select id="hearAboutUs" name="hearAboutUs" required>
+            <option value="">Select an option</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Friend or Colleague">Friend or Colleague</option>
+            <option value="Search Engine">Search Engine</option>
+            <option value="Campus Event">Campus Event</option>
+            <option value="Other">Other</option>
+          </select>
+          <p class="error" id="hearAboutUsError"></p>
+        </div>
+
+        <div class="step" data-step="5">
+          <fieldset>
+            <legend>5. Overall Rating <span>*</span></legend>
+            <div class="stars" id="ratingGroup">
+              <input type="radio" id="star5" name="rating" value="5" required />
+              <label for="star5" title="5 stars">★</label>
+              <input type="radio" id="star4" name="rating" value="4" />
+              <label for="star4" title="4 stars">★</label>
+              <input type="radio" id="star3" name="rating" value="3" />
+              <label for="star3" title="3 stars">★</label>
+              <input type="radio" id="star2" name="rating" value="2" />
+              <label for="star2" title="2 stars">★</label>
+              <input type="radio" id="star1" name="rating" value="1" />
+              <label for="star1" title="1 star">★</label>
+            </div>
+          </fieldset>
+          <p class="error" id="ratingError"></p>
+        </div>
+
+        <div class="step" data-step="6">
+          <fieldset>
+            <legend>6. Which area did we do best in? <span>*</span></legend>
+            <label class="option"><input type="radio" name="bestArea" value="Support" required /> Support</label>
+            <label class="option"><input type="radio" name="bestArea" value="Product Quality" /> Product Quality</label>
+            <label class="option"><input type="radio" name="bestArea" value="Communication" /> Communication</label>
+            <label class="option"><input type="radio" name="bestArea" value="Speed" /> Speed</label>
+          </fieldset>
+          <p class="error" id="bestAreaError"></p>
+        </div>
+
+        <div class="step" data-step="7">
+          <fieldset>
+            <legend>7. How likely are you to recommend us? <span>*</span></legend>
+            <label class="option"><input type="radio" name="recommendation" value="Very Likely" required /> Very Likely</label>
+            <label class="option"><input type="radio" name="recommendation" value="Likely" /> Likely</label>
+            <label class="option"><input type="radio" name="recommendation" value="Not Sure" /> Not Sure</label>
+            <label class="option"><input type="radio" name="recommendation" value="Unlikely" /> Unlikely</label>
+          </fieldset>
+          <p class="error" id="recommendationError"></p>
+        </div>
+
+        <div class="step" data-step="8">
+          <label for="favoriteFeature">8. What feature/service did you like most? <span>*</span></label>
+          <textarea
+            id="favoriteFeature"
+            name="favoriteFeature"
+            rows="4"
+            placeholder="Tell us what stood out for you"
+            required
+          ></textarea>
+          <p class="error" id="favoriteFeatureError"></p>
+        </div>
+
+        <div class="step" data-step="9">
+          <label for="improvement">9. What can we improve? <span>*</span></label>
+          <textarea
+            id="improvement"
+            name="improvement"
+            rows="4"
+            placeholder="Share suggestions for improvement"
+            required
+          ></textarea>
+          <p class="error" id="improvementError"></p>
+        </div>
+
+        <div class="step" data-step="10">
+          <fieldset>
+            <legend>10. Was our team responsive to your needs? <span>*</span></legend>
+            <label class="option"><input type="radio" name="teamResponsive" value="Yes, always" required /> Yes, always</label>
+            <label class="option"><input type="radio" name="teamResponsive" value="Most of the time" /> Most of the time</label>
+            <label class="option"><input type="radio" name="teamResponsive" value="Sometimes" /> Sometimes</label>
+            <label class="option"><input type="radio" name="teamResponsive" value="No" /> No</label>
+          </fieldset>
+          <p class="error" id="teamResponsiveError"></p>
+        </div>
+
+        <div class="step" data-step="11">
+          <label for="testimonialMessage">11. Final Testimonial Message <span>*</span></label>
+          <textarea
+            id="testimonialMessage"
+            name="testimonialMessage"
+            rows="5"
+            placeholder="Write the testimonial you'd like to share publicly"
+            required
+          ></textarea>
+          <p class="error" id="testimonialMessageError"></p>
+        </div>
+
+        <div class="step" data-step="12">
+          <fieldset>
+            <legend>12. May we publish your testimonial? <span>*</span></legend>
+            <label class="option"><input type="radio" name="publishPermission" value="Yes" required /> Yes</label>
+            <label class="option"><input type="radio" name="publishPermission" value="No" /> No</label>
+          </fieldset>
+          <p class="error" id="publishPermissionError"></p>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="prevBtn" class="btn secondary" disabled>Previous</button>
+          <button type="button" id="nextBtn" class="btn primary">Next</button>
+          <button type="submit" id="submitBtn" class="btn primary hidden">Submit</button>
+        </div>
+        <p class="error" id="formError"></p>
+      </form>
+
+      <div id="successMessage" class="success hidden" role="status" aria-live="polite">
+        <h3>Thank you!</h3>
+        <p>Your testimonial has been submitted successfully.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
